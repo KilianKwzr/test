@@ -724,6 +724,161 @@ button {
 }
 
 /* ==========================================================================
+   Page Contact
+   ========================================================================== */
+.contact {
+    padding-top: 24px;
+}
+
+.contact__layout {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 24px;
+    align-items: start;
+}
+
+/* Cartes de coordonnées */
+.contact__aside {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.contact-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 22px;
+    transition: transform var(--transition), border-color var(--transition),
+        background var(--transition);
+}
+
+.contact-card:not(.contact-card--static):hover {
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, 0.22);
+    background: var(--card-hover);
+}
+
+.contact-card__icon {
+    flex: 0 0 auto;
+    width: 44px;
+    height: 44px;
+    border-radius: 11px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    transition: color var(--transition);
+}
+
+.contact-card:hover .contact-card__icon {
+    color: var(--white);
+}
+
+.contact-card__icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.contact-card h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.contact-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    word-break: break-word;
+}
+
+/* Formulaire */
+.contact__form-wrap {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 36px;
+}
+
+.contact__form-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 26px;
+}
+
+.form__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.form__group {
+    margin-bottom: 18px;
+}
+
+.form__group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.form__optional {
+    font-weight: 400;
+    color: var(--text-muted);
+}
+
+.form__group input,
+.form__group textarea {
+    width: 100%;
+    padding: 13px 16px;
+    font-family: inherit;
+    font-size: 0.92rem;
+    color: var(--text);
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    resize: vertical;
+}
+
+.form__group input::placeholder,
+.form__group textarea::placeholder {
+    color: #6b7280;
+}
+
+.form__group input:focus,
+.form__group textarea:focus {
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.06);
+}
+
+.form__submit {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 15px 28px;
+    margin-top: 4px;
+}
+
+/* Note au-dessus du calendrier */
+.booking__note {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin: -36px auto 40px;
+    max-width: 480px;
+}
+
+/* ==========================================================================
    Réservation
    ========================================================================== */
 .booking__widget {
@@ -1468,6 +1623,25 @@ button {
 
     .page-head {
         padding-top: 120px;
+    }
+
+    /* Page Contact */
+    .contact__layout {
+        grid-template-columns: 1fr;
+    }
+
+    .contact__form-wrap {
+        padding: 26px 20px;
+        order: -1;
+    }
+
+    .form__row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .booking__note {
+        margin-top: -24px;
     }
 
     /* Page À propos */
