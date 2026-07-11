@@ -88,6 +88,17 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    /* ---------- Page À propos : emplacement si le portrait est absent ---------- */
+    const portrait = document.getElementById("portraitPhoto");
+    if (portrait) {
+        portrait.addEventListener("error", () => {
+            portrait.closest(".about-hero__photo").classList.add("about-hero__photo--empty");
+        });
+        if (portrait.complete && portrait.naturalWidth === 0) {
+            portrait.closest(".about-hero__photo").classList.add("about-hero__photo--empty");
+        }
+    }
+
     /* ---------- Vidéo de fond : masque le lecteur si le fichier est absent ---------- */
     const heroVideo = document.querySelector(".hero__video");
     if (heroVideo) {
