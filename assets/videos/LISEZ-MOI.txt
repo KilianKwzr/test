@@ -1,0 +1,13 @@
+VIDÉO DE FOND DU HERO
+=====================
+
+Placez votre vidéo de fond ici, dans ce dossier, avec exactement ce nom :
+
+    hero.mp4
+
+C'est tout : le code HTML pointe déjà vers assets/videos/hero.mp4,
+la vidéo s'affichera automatiquement en arrière-plan du haut du site
+(lecture automatique, en boucle, sans son).
+
+Conseil : pour un chargement rapide, compressez la vidéo si possible
+(idéalement moins de 10 Mo, résolution 1920x1080 max, format MP4/H.264).

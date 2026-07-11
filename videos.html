@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes animations — Kilian Kwiczor</title>
+    <meta name="description" content="Découvrez les animations de Kilian Kwiczor : interviews, WebTV, directs et animations événementielles.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ============ NAVIGATION ============ -->
+    <header class="nav is-scrolled" id="nav">
+        <nav class="nav__inner">
+            <button class="nav__burger" id="navBurger" aria-label="Ouvrir le menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav__links" id="navLinks">
+                <li><a href="index.html" class="nav__link">Accueil</a></li>
+                <li><a href="videos.html" class="nav__link nav__link--active">Projets</a></li>
+                <li><a href="a-propos.html" class="nav__link">À propos</a></li>
+                <li><a href="contact.html" class="nav__link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- ============ EN-TÊTE DE PAGE ============ -->
+        <section class="page-head">
+            <div class="page-head__inner">
+                <p class="page-head__kicker">Portfolio</p>
+                <h1 class="page-head__title">Mes animations</h1>
+                <p class="page-head__subtitle">Interviews, plateaux WebTV, directs et animations événementielles&nbsp;: un aperçu en vidéo de mes interventions au micro.</p>
+            </div>
+        </section>
+
+        <!-- ============ FILTRES ============ -->
+        <div class="filters reveal" role="group" aria-label="Filtrer les vidéos par type d'animation">
+            <button class="filter is-active" data-filter="all">Tous</button>
+            <button class="filter" data-filter="interview">Interviews</button>
+            <button class="filter" data-filter="webtv">WebTV &amp; Direct</button>
+            <button class="filter" data-filter="evenementiel">Événementiel</button>
+        </div>
+
+        <!-- ============ GRILLE DE VIDÉOS ============ -->
+        <section class="gallery section">
+            <div class="gallery__grid">
+
+                <!-- Interview McSkyz — Salon Polar Lens -->
+                <article class="video-card reveal" data-category="interview">
+                    <div class="video-card__media">
+                        <iframe src="https://www.youtube.com/embed/7Gdozm9i-9Q"
+                            title="McSkyz est-il parano ? Interview Polar Lens"
+                            loading="lazy" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-card__body">
+                        <div class="video-card__meta">
+                            <span class="badge badge--interview">Interview</span>
+                            <span class="video-card__place">Salon Polar Lens</span>
+                        </div>
+                        <h2 class="video-card__title">McSkyz est-il parano&nbsp;?</h2>
+                        <p class="video-card__desc">Interview décalée du vidéaste McSkyz autour du thème de la paranoïa, en marge du salon du livre Polar Lens.</p>
+                    </div>
+                </article>
+
+                <!-- Village Entreprises — Romain Martin -->
+                <article class="video-card reveal" data-category="interview">
+                    <div class="video-card__media">
+                        <iframe src="https://artoistv.univ-artois.fr/video/6796-romain-martin-memento-booth/?is_iframe=true"
+                            title="Romain MARTIN, Memento Booth"
+                            loading="lazy" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-card__body">
+                        <div class="video-card__meta">
+                            <span class="badge badge--interview">Interview</span>
+                            <span class="video-card__place">Greenway Festival, Arras</span>
+                        </div>
+                        <h2 class="video-card__title">Village Entreprises — Romain Martin</h2>
+                        <p class="video-card__desc">Interview de Romain Martin, fondateur de Memento Booth, sur l'espace interview du Village Entreprises.</p>
+                    </div>
+                </article>
+
+                <!-- WebTV Le Lobby -->
+                <article class="video-card reveal" data-category="webtv">
+                    <div class="video-card__media">
+                        <iframe src="https://www.youtube.com/embed/-nBJZurYa2s"
+                            title="Présentateur WebTV MMI (Le Lobby)"
+                            loading="lazy" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-card__body">
+                        <div class="video-card__meta">
+                            <span class="badge badge--webtv">WebTV</span>
+                            <span class="video-card__place">Plateau Le Lobby</span>
+                        </div>
+                        <h2 class="video-card__title">Présentateur WebTV — Le Lobby</h2>
+                        <p class="video-card__desc">Animation en plateau de l'émission Le Lobby&nbsp;: lancement, interviews d'invités et transitions en direct.</p>
+                    </div>
+                </article>
+
+                <!-- Short — Soirée d'inauguration (format portrait) -->
+                <article class="video-card video-card--portrait reveal" data-category="evenementiel">
+                    <div class="video-card__media">
+                        <iframe src="https://www.youtube.com/embed/GkvFnexhpKQ"
+                            title="Animation — Soirée d'inauguration avec Nicolas Lamare, imitateur"
+                            loading="lazy" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-card__body">
+                        <div class="video-card__meta">
+                            <span class="badge badge--event">Événementiel</span>
+                            <span class="video-card__place">Soirée d'inauguration</span>
+                        </div>
+                        <h2 class="video-card__title">Soirée d'inauguration — Nicolas Lamare</h2>
+                        <p class="video-card__desc">Extrait d'une soirée d'inauguration animée aux côtés de l'imitateur Nicolas Lamare.</p>
+                    </div>
+                </article>
+
+                <!-- Interview Franck Thilliez — Salon Polar Lens -->
+                <article class="video-card reveal" data-category="interview">
+                    <div class="video-card__media">
+                        <iframe src="https://www.youtube.com/embed/SgvTcJIwjws"
+                            title="L'autre moi : Franck Thilliez nous révèle des secrets"
+                            loading="lazy" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-card__body">
+                        <div class="video-card__meta">
+                            <span class="badge badge--interview">Interview</span>
+                            <span class="video-card__place">Salon Polar Lens</span>
+                        </div>
+                        <h2 class="video-card__title">Franck Thilliez — L'autre moi</h2>
+                        <p class="video-card__desc">Rencontre avec l'auteur de thrillers Franck Thilliez, qui se livre sur son parcours et ses romans.</p>
+                    </div>
+                </article>
+
+                <!-- JPO IUT de Lens 2025 -->
+                <article class="video-card reveal" data-category="webtv">
+                    <div class="video-card__media">
+                        <iframe src="https://www.youtube.com/embed/LxuPSaEicJs?si=xOLDJjHSS8j14J5-"
+                            title="Journée Portes Ouvertes 2025 — IUT de Lens, en direct"
+                            loading="lazy" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-card__body">
+                        <div class="video-card__meta">
+                            <span class="badge badge--webtv">Direct</span>
+                            <span class="video-card__place">IUT de Lens</span>
+                        </div>
+                        <h2 class="video-card__title">Journée Portes Ouvertes 2025</h2>
+                        <p class="video-card__desc">Animation du direct de la JPO&nbsp;: interviews du maire, des chefs de département, des étudiants et du BDE tout au long de la journée.</p>
+                    </div>
+                </article>
+
+                <!-- Village Entreprises — Maxime Videlaine -->
+                <article class="video-card reveal" data-category="interview">
+                    <div class="video-card__media">
+                        <iframe src="https://artoistv.univ-artois.fr/video/6792-maxime-videlaine-charge-de-projet-hubhouse/?is_iframe=true"
+                            title="Maxime Videlaine, chargé de projet Hubhouse"
+                            loading="lazy" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-card__body">
+                        <div class="video-card__meta">
+                            <span class="badge badge--interview">Interview</span>
+                            <span class="video-card__place">Greenway Festival, Arras</span>
+                        </div>
+                        <h2 class="video-card__title">Village Entreprises — Maxime Videlaine</h2>
+                        <p class="video-card__desc">Échange avec Maxime Videlaine, chargé de projet Hubhouse, sur l'accompagnement des étudiants entrepreneurs.</p>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- ============ APPEL À L'ACTION ============ -->
+        <section class="cta section">
+            <div class="cta__box reveal">
+                <h2 class="cta__title">Un événement à animer&nbsp;?</h2>
+                <p class="cta__text">Parlons de votre projet et voyons ensemble l'animation qui lui correspond.</p>
+                <a href="index.html#reservation" class="btn btn--light">Réserver un appel</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+        <div class="footer__social">
+            <a href="https://www.instagram.com/kilian_kwiczor/" target="_blank" rel="noopener" aria-label="Instagram" class="social social--instagram">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/kilian-kwiczor-708461267/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social social--linkedin">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="https://www.youtube.com/@kilianlamare" target="_blank" rel="noopener" aria-label="YouTube" class="social social--youtube">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+        </div>
+        <div class="footer__meta">
+            <a href="mailto:kilianlamare@gmail.com" class="footer__mail">kilianlamare@gmail.com</a>
+            <span class="footer__copy">© 2026 kilianlamare.com</span>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
