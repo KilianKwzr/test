@@ -69,6 +69,25 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    /* ---------- Page Projets : filtrage des vidéos par catégorie ---------- */
+    const filterButtons = document.querySelectorAll(".filter");
+    if (filterButtons.length) {
+        const cards = document.querySelectorAll(".video-card");
+
+        filterButtons.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                filterButtons.forEach((b) => b.classList.remove("is-active"));
+                btn.classList.add("is-active");
+
+                const filter = btn.dataset.filter;
+                cards.forEach((card) => {
+                    const show = filter === "all" || card.dataset.category === filter;
+                    card.classList.toggle("is-hidden", !show);
+                });
+            });
+        });
+    }
+
     /* ---------- Vidéo de fond : masque le lecteur si le fichier est absent ---------- */
     const heroVideo = document.querySelector(".hero__video");
     if (heroVideo) {
