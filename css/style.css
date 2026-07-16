@@ -285,7 +285,15 @@ button {
     letter-spacing: -0.02em;
     line-height: 1.25;
     text-shadow: 0 2px 30px rgba(0, 0, 0, 0.6);
-    margin-bottom: 32px;
+    margin-bottom: 18px;
+}
+
+.hero__subtitle {
+    font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+    color: rgba(255, 255, 255, 0.85);
+    text-shadow: 0 1px 20px rgba(0, 0, 0, 0.7);
+    max-width: 640px;
+    margin: 0 auto 32px;
 }
 
 .hero__actions {
