@@ -99,6 +99,54 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    /* ---------- Page Contact : envoi du formulaire en AJAX ---------- */
+    const contactForm = document.getElementById("contactForm");
+    if (contactForm) {
+        const statusEl = document.getElementById("formStatus");
+        const successEl = document.getElementById("formSuccess");
+        const submitBtn = contactForm.querySelector(".form__submit");
+
+        contactForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            // Anti-spam : si le honeypot est rempli, on ignore silencieusement.
+            if (contactForm.querySelector(".form__honey").value) return;
+
+            statusEl.textContent = "";
+            statusEl.classList.remove("is-error");
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Envoi en cours…";
+
+            try {
+                const endpoint = contactForm.action.replace(
+                    "formsubmit.co/",
+                    "formsubmit.co/ajax/"
+                );
+                const response = await fetch(endpoint, {
+                    method: "POST",
+                    headers: { Accept: "application/json" },
+                    body: new FormData(contactForm),
+                });
+
+                if (!response.ok) throw new Error("http " + response.status);
+                const data = await response.json();
+                if (data.success === "true" || data.success === true) {
+                    contactForm.hidden = true;
+                    successEl.hidden = false;
+                    successEl.scrollIntoView({ behavior: "smooth", block: "center" });
+                } else {
+                    throw new Error("formsubmit");
+                }
+            } catch (err) {
+                statusEl.textContent =
+                    "Le message n'a pas pu être envoyé. Vérifiez les informations indiquées ou écrivez-moi directement à kilianlamare@gmail.com.";
+                statusEl.classList.add("is-error");
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Envoyer les informations du projet";
+            }
+        });
+    }
+
     /* ---------- Vidéo de fond : masque le lecteur si le fichier est absent ---------- */
     const heroVideo = document.querySelector(".hero__video");
     if (heroVideo) {

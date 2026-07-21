@@ -44,111 +44,238 @@
         <section class="page-head">
             <div class="page-head__inner">
                 <p class="page-head__kicker">Contact</p>
-                <h1 class="page-head__title">Parlons de votre événement</h1>
-                <p class="page-head__subtitle">Un projet, une date, une question&nbsp;? Écrivez-moi ou réservez directement un appel&nbsp;: je réponds rapidement.</p>
+                <h1 class="page-head__title">Parlons de votre prochain événement</h1>
+                <p class="page-head__subtitle">Convention, cérémonie, événement sportif, activation de marque ou interview&nbsp;: partagez-moi les premières informations du projet afin que je puisse comprendre le format, le public et le niveau de préparation attendu.</p>
+                <p class="page-head__reassurance">Basé entre Lens et Lille · Déplacements partout en France</p>
             </div>
         </section>
 
-        <!-- ============ MESSAGE + COORDONNÉES ============ -->
+        <!-- ============ FORMULAIRE + COLONNE LATÉRALE ============ -->
         <section class="contact section">
             <div class="contact__layout">
 
-                <!-- Coordonnées -->
-                <aside class="contact__aside reveal">
-                    <a class="contact-card" href="mailto:kilianlamare@gmail.com">
-                        <div class="contact-card__icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                        </div>
-                        <div>
-                            <h3>Email</h3>
-                            <p>kilianlamare@gmail.com</p>
-                        </div>
-                    </a>
-                    <a class="contact-card" href="https://www.instagram.com/kilian_kwiczor/" target="_blank" rel="noopener">
-                        <div class="contact-card__icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-                        </div>
-                        <div>
-                            <h3>Instagram</h3>
-                            <p>@kilian_kwiczor</p>
-                        </div>
-                    </a>
-                    <a class="contact-card" href="https://www.linkedin.com/in/kilian-kwiczor-708461267/" target="_blank" rel="noopener">
-                        <div class="contact-card__icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-                        </div>
-                        <div>
-                            <h3>LinkedIn</h3>
-                            <p>Kilian Kwiczor</p>
-                        </div>
-                    </a>
-                    <div class="contact-card contact-card--static">
-                        <div class="contact-card__icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                        </div>
-                        <div>
-                            <h3>Zone d'intervention</h3>
-                            <p>Basé à Lens &amp; Lille — mobile partout en France</p>
+                <!-- Colonne principale : bloc agence + formulaire -->
+                <div class="contact__main">
+                    <div class="agency-block reveal">
+                        <h2 class="agency-block__title">Vous êtes une agence ou une équipe de production&nbsp;?</h2>
+                        <p>Vous pouvez m'envoyer directement le conducteur, le brief ou les informations déjà disponibles. Je m'intègre à votre méthode de travail et peux échanger avec la chefferie de projet, la production ou la régie selon les besoins du format.</p>
+                    </div>
+
+                    <div class="contact__form-wrap reveal">
+                        <h2 class="contact__form-title">Les informations de votre projet</h2>
+                        <!--
+                            FORMULAIRE : envoi AJAX via FormSubmit (service gratuit, sans compte).
+                            Au premier envoi depuis le site en ligne, FormSubmit enverra un email
+                            de confirmation à kilianlamare@gmail.com : cliquez sur le lien
+                            d'activation et tout fonctionnera ensuite.
+                            L'adresse pourra être remplacée par contact@kiliankwiczor.com une fois
+                            celle-ci testée et fiable.
+                        -->
+                        <form class="form" id="contactForm" action="https://formsubmit.co/kilianlamare@gmail.com" method="POST">
+                            <input type="hidden" name="_subject" value="Nouvelle demande depuis kiliankwiczor.com">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="text" name="_honey" class="form__honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+                            <div class="form__row">
+                                <div class="form__group">
+                                    <label for="nom">Nom et prénom</label>
+                                    <input type="text" id="nom" name="Nom et prénom" autocomplete="name" required>
+                                </div>
+                                <div class="form__group">
+                                    <label for="societe">Société ou organisation <span class="form__optional">(facultatif)</span></label>
+                                    <input type="text" id="societe" name="Société" autocomplete="organization">
+                                </div>
+                            </div>
+
+                            <div class="form__row">
+                                <div class="form__group">
+                                    <label for="email">Adresse e-mail professionnelle</label>
+                                    <input type="email" id="email" name="Email" autocomplete="email" required>
+                                </div>
+                                <div class="form__group">
+                                    <label for="tel">Téléphone <span class="form__optional">(facultatif)</span></label>
+                                    <input type="tel" id="tel" name="Téléphone" autocomplete="tel">
+                                </div>
+                            </div>
+
+                            <div class="form__row">
+                                <div class="form__group">
+                                    <label for="type">Type d'événement</label>
+                                    <select id="type" name="Type d'événement">
+                                        <option value="" selected>Sélectionner…</option>
+                                        <option>Convention ou séminaire</option>
+                                        <option>Cérémonie ou remise de prix</option>
+                                        <option>Événement institutionnel</option>
+                                        <option>Événement sportif</option>
+                                        <option>Activation de marque</option>
+                                        <option>Interview ou table ronde</option>
+                                        <option>Salon ou inauguration</option>
+                                        <option>Autre format</option>
+                                    </select>
+                                </div>
+                                <div class="form__group">
+                                    <label for="date">Date prévue</label>
+                                    <input type="text" id="date" name="Date prévue" placeholder="Ex. 14 mars 2026 — ou « à définir »">
+                                </div>
+                            </div>
+
+                            <div class="form__row">
+                                <div class="form__group">
+                                    <label for="lieu">Ville ou lieu de l'événement <span class="form__optional">(facultatif)</span></label>
+                                    <input type="text" id="lieu" name="Ville ou lieu">
+                                </div>
+                                <div class="form__group">
+                                    <label for="participants">Nombre approximatif de participants <span class="form__optional">(facultatif)</span></label>
+                                    <select id="participants" name="Participants">
+                                        <option value="" selected>À définir</option>
+                                        <option>Moins de 50</option>
+                                        <option>50 à 150</option>
+                                        <option>150 à 300</option>
+                                        <option>300 à 500</option>
+                                        <option>Plus de 500</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <fieldset class="form__group form__fieldset">
+                                <legend>Intervention recherchée <span class="form__optional">(facultatif)</span></legend>
+                                <div class="form__checks">
+                                    <label class="form__check"><input type="checkbox" name="Intervention" value="Présentation générale"> Présentation générale</label>
+                                    <label class="form__check"><input type="checkbox" name="Intervention" value="Maîtrise de cérémonie"> Maîtrise de cérémonie</label>
+                                    <label class="form__check"><input type="checkbox" name="Intervention" value="Animation micro"> Animation micro</label>
+                                    <label class="form__check"><input type="checkbox" name="Intervention" value="Interviews"> Interviews</label>
+                                    <label class="form__check"><input type="checkbox" name="Intervention" value="Table ronde"> Table ronde</label>
+                                    <label class="form__check"><input type="checkbox" name="Intervention" value="Activation terrain"> Activation terrain</label>
+                                    <label class="form__check"><input type="checkbox" name="Intervention" value="À définir ensemble"> À définir ensemble</label>
+                                </div>
+                            </fieldset>
+
+                            <div class="form__group">
+                                <label for="message">Parlez-moi du projet</label>
+                                <textarea id="message" name="Message" rows="6" placeholder="Format, public, horaires, intervenants, tonalité souhaitée, principales séquences et contraintes déjà identifiées." required></textarea>
+                            </div>
+
+                            <p class="form__note-file">Vous avez déjà un conducteur ou un brief&nbsp;? Vous pourrez me l'envoyer par e-mail après ce premier contact.</p>
+
+                            <button type="submit" class="btn btn--light form__submit">Envoyer les informations du projet</button>
+                            <p class="form__consent">Les informations transmises servent uniquement à étudier votre demande et à vous recontacter.</p>
+                            <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
+                        </form>
+
+                        <!-- Message de confirmation (affiché après envoi réussi) -->
+                        <div class="form__success" id="formSuccess" hidden>
+                            <div class="form__success-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                            </div>
+                            <h3>Votre demande a bien été transmise</h3>
+                            <p>Merci pour ces informations. Je vais prendre connaissance du format et vous répondre afin de préciser les besoins, les disponibilités et les prochaines étapes.</p>
+                            <a href="videos.html" class="btn btn--ghost">Voir les réalisations</a>
                         </div>
                     </div>
-                </aside>
-
-                <!-- Formulaire -->
-                <div class="contact__form-wrap reveal">
-                    <h2 class="contact__form-title">Envoyez-moi un message</h2>
-                    <!--
-                        FORMULAIRE : envoi via FormSubmit (service gratuit, sans compte).
-                        Au premier message envoyé depuis le site en ligne, FormSubmit
-                        enverra un email de confirmation à kilianlamare@gmail.com —
-                        cliquez sur le lien d'activation et tout fonctionnera ensuite.
-                    -->
-                    <form class="form" action="https://formsubmit.co/kilianlamare@gmail.com" method="POST">
-                        <input type="hidden" name="_subject" value="Nouveau message depuis le site kiliankwiczor.com">
-                        <input type="hidden" name="_template" value="table">
-                        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-
-                        <div class="form__row">
-                            <div class="form__group">
-                                <label for="nom">Nom complet</label>
-                                <input type="text" id="nom" name="nom" placeholder="Romain Dupont" required>
-                            </div>
-                            <div class="form__group">
-                                <label for="email">Email</label>
-                                <input type="email" id="email" name="email" placeholder="contact@romain.dupont" required>
-                            </div>
-                        </div>
-                        <div class="form__group">
-                            <label for="type">Type d'événement <span class="form__optional">(facultatif)</span></label>
-                            <input type="text" id="type" name="type_evenement" placeholder="Séminaire, soirée, salon, WebTV, convention…">
-                        </div>
-                        <div class="form__group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="7" placeholder="Décrivez votre projet et ses objectifs, la date et le lieu si vous les connaissez déjà." required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn--light form__submit">Envoyer</button>
-                    </form>
                 </div>
+
+                <!-- Colonne latérale : contacts directs + infos pratiques + démo -->
+                <aside class="contact__aside reveal">
+                    <div class="aside-block">
+                        <h2 class="aside-block__title">Vous préférez un échange direct&nbsp;?</h2>
+                        <a class="contact-card" href="mailto:kilianlamare@gmail.com">
+                            <div class="contact-card__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            </div>
+                            <div>
+                                <h3>Email</h3>
+                                <p>kilianlamare@gmail.com</p>
+                            </div>
+                        </a>
+                        <!-- TÉLÉPHONE : donnez-moi le numéro à afficher et je l'ajoute ici. -->
+                        <a class="contact-card" href="https://www.linkedin.com/in/kilian-kwiczor-708461267/" target="_blank" rel="noopener">
+                            <div class="contact-card__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                            </div>
+                            <div>
+                                <h3>LinkedIn</h3>
+                                <p>Kilian Kwiczor</p>
+                            </div>
+                        </a>
+                        <a class="contact-card" href="https://www.instagram.com/kilian_kwiczor/" target="_blank" rel="noopener">
+                            <div class="contact-card__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                            </div>
+                            <div>
+                                <h3>Instagram</h3>
+                                <p>@kilian_kwiczor</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="aside-block info-block">
+                        <h2 class="aside-block__title">Informations utiles</h2>
+                        <ul class="info-list">
+                            <li><span>Base</span> Lens et Lille</li>
+                            <li><span>Zone d'intervention</span> France entière</li>
+                            <li><span>Formats</span> présentiel, plateau, direct et dispositifs hybrides</li>
+                            <li><span>Interlocuteurs</span> agences, entreprises, collectivités, centres commerciaux et organisateurs d'événements</li>
+                        </ul>
+                    </div>
+
+                    <div class="aside-block demo-block">
+                        <h2 class="aside-block__title">Voir Kilian en situation</h2>
+                        <p>Un aperçu au micro avant d'échanger&nbsp;?</p>
+                        <a href="index.html#demo" class="btn btn--ghost">Regarder la bande démo</a>
+                    </div>
+                </aside>
 
             </div>
         </section>
 
-        <!-- ============ RÉSERVATION ============ -->
-        <section class="booking section" id="reservation">
-            <h2 class="section__title reveal">Réservez un appel de<br class="br-mobile"> consultation gratuit</h2>
-            <p class="booking__note reveal">Rendez-vous découverte de 20 minutes, en visio — gratuit et sans engagement.</p>
-            <div class="booking__widget reveal">
-                <!--
-                    EMBED DU CALENDRIER (Cal.com) :
-                    collez ici le code d'intégration fourni par Cal.com
-                    (Event type > Embed > Inline) à la place du bloc
-                    "booking__placeholder" ci-dessous.
-                -->
-                <div class="booking__placeholder">
-                    <div class="booking__placeholder-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <!-- ============ FAQ ============ -->
+        <section class="faq section">
+            <h2 class="section__title reveal">Questions fréquentes</h2>
+            <div class="faq__list">
+                <div class="faq__item reveal">
+                    <button class="faq__question" aria-expanded="false">
+                        <span>Intervenez-vous partout en France&nbsp;?</span>
+                        <span class="faq__toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq__answer">
+                        <p>Oui. Je suis basé entre Lens et Lille et je me déplace partout en France selon le format, les horaires et les besoins de production.</p>
                     </div>
-                    <p class="booking__placeholder-title">Rendez-vous découverte — 20 min</p>
-                    <p class="booking__placeholder-text">Le calendrier de réservation sera intégré ici.</p>
+                </div>
+                <div class="faq__item reveal">
+                    <button class="faq__question" aria-expanded="false">
+                        <span>Pouvez-vous travailler à partir de notre conducteur&nbsp;?</span>
+                        <span class="faq__toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq__answer">
+                        <p>Oui. Je peux intervenir à partir d'un conducteur déjà finalisé ou contribuer à clarifier les transitions, les lancements et les séquences nécessitant une prise de parole.</p>
+                    </div>
+                </div>
+                <div class="faq__item reveal">
+                    <button class="faq__question" aria-expanded="false">
+                        <span>Pouvez-vous préparer et conduire des interviews&nbsp;?</span>
+                        <span class="faq__toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq__answer">
+                        <p>Oui. La préparation peut inclure la recherche des sujets, l'organisation des questions, la vérification des informations et l'adaptation du niveau de langage au public.</p>
+                    </div>
+                </div>
+                <div class="faq__item reveal">
+                    <button class="faq__question" aria-expanded="false">
+                        <span>Travaillez-vous directement avec les agences événementielles&nbsp;?</span>
+                        <span class="faq__toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq__answer">
+                        <p>Oui. Je peux intervenir en marque blanche ou dans le cadre défini par l'agence, en respectant la relation avec le client final, les validations et les consignes de production.</p>
+                    </div>
+                </div>
+                <div class="faq__item reveal">
+                    <button class="faq__question" aria-expanded="false">
+                        <span>Comment se déroule la préparation&nbsp;?</span>
+                        <span class="faq__toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq__answer">
+                        <p>Après un premier échange, je prends connaissance du format, du public, du conducteur, des intervenants et des contraintes techniques. Le niveau de préparation est ensuite adapté à la complexité de l'événement.</p>
+                    </div>
                 </div>
             </div>
         </section>
