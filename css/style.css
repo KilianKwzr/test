@@ -1834,6 +1834,66 @@ button {
 }
 
 /* ==========================================================================
+   Bandeau cookies
+   ========================================================================== */
+.cookie-banner {
+    position: fixed;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    z-index: 200;
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 18px 22px;
+    background: rgba(20, 20, 20, 0.97);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 14px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(12px);
+    animation: cookie-in 0.5s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+
+@keyframes cookie-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.cookie-banner__text {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.cookie-banner__actions {
+    display: flex;
+    gap: 10px;
+    flex: 0 0 auto;
+}
+
+.cookie-banner__btn {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+}
+
+@media (max-width: 600px) {
+    .cookie-banner {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+    }
+    .cookie-banner__actions {
+        justify-content: stretch;
+    }
+    .cookie-banner__btn {
+        flex: 1;
+    }
+}
+
+/* ==========================================================================
    Responsive
    ========================================================================== */
 

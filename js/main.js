@@ -2,6 +2,68 @@
    Kilian Kwiczor — Scripts de la page
    ========================================================================== */
 
+/* ==========================================================================
+   Mesure d'audience (Google Analytics) + consentement cookies (RGPD)
+   GA n'est chargé QUE si le visiteur accepte. Aucun cookie de suivi avant.
+   ========================================================================== */
+(function () {
+    var GA_ID = "G-7D9XPF9CGH";
+    var STORE = "cookie-consent";
+
+    function loadGA() {
+        if (window.__gaLoaded) return;
+        window.__gaLoaded = true;
+        var s = document.createElement("script");
+        s.async = true;
+        s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () { dataLayer.push(arguments); };
+        gtag("js", new Date());
+        gtag("config", GA_ID, { anonymize_ip: true });
+    }
+
+    function hideBanner() {
+        var b = document.getElementById("cookieBanner");
+        if (b) b.remove();
+    }
+
+    function showBanner() {
+        var banner = document.createElement("div");
+        banner.className = "cookie-banner";
+        banner.id = "cookieBanner";
+        banner.setAttribute("role", "dialog");
+        banner.setAttribute("aria-label", "Consentement aux cookies de mesure d'audience");
+        banner.innerHTML =
+            '<p class="cookie-banner__text">Ce site utilise des cookies de mesure d\'audience (Google Analytics) pour comprendre sa fréquentation. Vous pouvez les accepter ou les refuser.</p>' +
+            '<div class="cookie-banner__actions">' +
+            '<button type="button" class="btn btn--outline cookie-banner__btn" id="cookieRefuse">Refuser</button>' +
+            '<button type="button" class="btn btn--light cookie-banner__btn" id="cookieAccept">Accepter</button>' +
+            "</div>";
+        document.body.appendChild(banner);
+
+        document.getElementById("cookieAccept").addEventListener("click", function () {
+            try { localStorage.setItem(STORE, "granted"); } catch (e) {}
+            loadGA();
+            hideBanner();
+        });
+        document.getElementById("cookieRefuse").addEventListener("click", function () {
+            try { localStorage.setItem(STORE, "denied"); } catch (e) {}
+            hideBanner();
+        });
+    }
+
+    var choice = null;
+    try { choice = localStorage.getItem(STORE); } catch (e) {}
+
+    if (choice === "granted") {
+        loadGA();
+    } else if (choice !== "denied") {
+        if (document.body) showBanner();
+        else document.addEventListener("DOMContentLoaded", showBanner);
+    }
+})();
+
 document.addEventListener("DOMContentLoaded", () => {
     /* ---------- Navbar : fond au scroll ---------- */
     const nav = document.getElementById("nav");
@@ -139,7 +201,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             } catch (err) {
                 statusEl.textContent =
-                    "Le message n'a pas pu être envoyé. Vérifiez les informations indiquées ou écrivez-moi directement à kilianlamare@gmail.com.";
+                    "Le message n'a pas pu être envoyé. Vérifiez les informations indiquées ou écrivez-moi directement à contact@kiliankwiczor.com.";
                 statusEl.classList.add("is-error");
                 submitBtn.disabled = false;
                 submitBtn.textContent = "Envoyer les informations du projet";
