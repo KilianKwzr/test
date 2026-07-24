@@ -1930,6 +1930,47 @@ button {
         padding: 60px 18px;
     }
 
+    /* Hero mobile : bande vidéo 16:9 (vidéo entière, pas de recadrage) + texte dessous */
+    .hero {
+        display: block;
+        min-height: 0;
+        padding-top: 64px;
+        background: var(--bg);
+    }
+
+    .hero__video {
+        position: relative;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+    }
+
+    .hero__overlay {
+        display: none;
+    }
+
+    .hero__content {
+        position: static;
+        padding: 30px 20px 44px;
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+
+    .hero__title {
+        text-shadow: none;
+        margin-bottom: 14px;
+    }
+
+    .hero__subtitle,
+    .hero__reassurance {
+        text-shadow: none;
+    }
+
+    .hero__scroll-hint {
+        display: none;
+    }
+
     .section__title {
         margin-bottom: 40px;
     }
