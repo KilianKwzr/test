@@ -5,10 +5,11 @@
 
 /* ---------- Variables ---------- */
 :root {
-    --bg: #0a0a0a;
-    --bg-soft: #111111;
-    --card: #17171a;
-    --card-hover: #202024;
+    /* Bleu nuit profond (dégradé géré sur body) */
+    --bg: #0a0c14;
+    --bg-soft: #10131f;
+    --card: #161925;
+    --card-hover: #1e2231;
     --border: rgba(255, 255, 255, 0.08);
     --text: #f5f5f5;
     --text-muted: #a3a3a3;
@@ -37,7 +38,13 @@ html {
 
 body {
     font-family: var(--font);
-    background: var(--bg);
+    background-color: var(--bg);
+    /* Dégradé bleu nuit : halo froid en haut, profondeur en bas */
+    background-image:
+        radial-gradient(1200px 760px at 50% -12%, rgba(58, 78, 138, 0.22), transparent 62%),
+        radial-gradient(1000px 720px at 85% 108%, rgba(38, 52, 96, 0.16), transparent 58%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     color: var(--text);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
@@ -258,14 +265,15 @@ button {
 
 .nav__links {
     display: flex;
-    gap: 8px;
+    gap: 4px;
 }
 
 .nav__link {
-    padding: 8px 16px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--text-muted);
+    padding: 9px 18px;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.005em;
+    color: rgba(255, 255, 255, 0.74);
     border-radius: 8px;
     transition: color 0.25s ease, background 0.25s ease;
 }
@@ -559,8 +567,14 @@ button {
 }
 
 .marquee {
-    overflow: hidden;
     position: relative;
+    overflow-x: auto;
+    overflow-y: hidden;
+    cursor: grab;
+    scroll-behavior: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;          /* Firefox */
+    -ms-overflow-style: none;       /* IE/Edge */
     /* Fondu sur les bords */
     -webkit-mask-image: linear-gradient(
         90deg,
@@ -578,25 +592,24 @@ button {
     );
 }
 
+.marquee::-webkit-scrollbar {
+    display: none;                  /* Chrome/Safari */
+}
+
+.marquee.is-grabbing {
+    cursor: grabbing;
+}
+
 .marquee__track {
     display: flex;
     gap: 20px;
     width: max-content;
-    animation: marquee 38s linear infinite;
+    user-select: none;
 }
 
-.marquee:hover .marquee__track {
-    animation-play-state: paused;
-}
-
-@keyframes marquee {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        /* -50% = largeur d'une série de logos (le contenu est doublé) */
-        transform: translateX(calc(-50% - 10px));
-    }
+/* Pendant le glissement, on empêche la sélection/ouverture des images */
+.marquee.is-grabbing .marquee__item img {
+    pointer-events: none;
 }
 
 .marquee__item {
@@ -2449,9 +2462,5 @@ button {
         transform: none;
         animation: none;
         transition: none;
-    }
-
-    .marquee__track {
-        animation-duration: 120s;
     }
 }

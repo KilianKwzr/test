@@ -108,6 +108,82 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
 
+    /* ---------- Carrousel clients : défile seul + prise en main ---------- */
+    (function setupMarquee() {
+        const marquee = document.querySelector(".marquee");
+        if (!marquee) return;
+
+        const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const SPEED = 0.5;          // px par frame (~30 px/s à 60fps)
+        let paused = false;         // survol
+        let dragging = false;
+        let startX = 0;
+        let startScroll = 0;
+        let moved = false;
+
+        // Boucle infinie : le contenu est doublé, on ramène le scroll
+        // dans la première moitié pour un défilement continu.
+        function half() {
+            return marquee.scrollWidth / 2;
+        }
+        function normalize() {
+            const h = half();
+            if (h <= 0) return;
+            if (marquee.scrollLeft >= h) marquee.scrollLeft -= h;
+            else if (marquee.scrollLeft < 0) marquee.scrollLeft += h;
+        }
+
+        function tick() {
+            if (!reduce && !paused && !dragging) {
+                marquee.scrollLeft += SPEED;
+                normalize();
+            }
+            requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+
+        // Pause au survol (souris) — on garde le défilement sur mobile
+        marquee.addEventListener("mouseenter", () => { paused = true; });
+        marquee.addEventListener("mouseleave", () => { paused = false; });
+
+        // Prise en main : glisser-déposer horizontal.
+        // Souris/stylet = on pilote scrollLeft ; tactile = scroll natif (on
+        // met juste l'auto en pause le temps du geste).
+        marquee.addEventListener("pointerdown", (e) => {
+            dragging = true;
+            moved = false;
+            startX = e.clientX;
+            startScroll = marquee.scrollLeft;
+            if (e.pointerType !== "touch") {
+                marquee.classList.add("is-grabbing");
+                try { marquee.setPointerCapture(e.pointerId); } catch (_) {}
+            }
+        });
+        marquee.addEventListener("pointermove", (e) => {
+            if (!dragging || e.pointerType === "touch") return;
+            const dx = e.clientX - startX;
+            if (Math.abs(dx) > 3) moved = true;
+            marquee.scrollLeft = startScroll - dx;
+            normalize();
+        });
+        function endDrag(e) {
+            if (!dragging) return;
+            dragging = false;
+            marquee.classList.remove("is-grabbing");
+            try { marquee.releasePointerCapture(e.pointerId); } catch (_) {}
+        }
+        marquee.addEventListener("pointerup", endDrag);
+        marquee.addEventListener("pointercancel", endDrag);
+        marquee.addEventListener("pointerleave", endDrag);
+
+        // Empêche le "clic fantôme" sur un logo après un glissement
+        marquee.addEventListener("click", (e) => {
+            if (moved) { e.preventDefault(); e.stopPropagation(); }
+        }, true);
+
+        // Molette horizontale (trackpad / shift+molette) reste native
+    })();
+
     /* ---------- FAQ : accordéon ---------- */
     document.querySelectorAll(".faq__item").forEach((item) => {
         const question = item.querySelector(".faq__question");
