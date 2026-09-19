@@ -7,12 +7,16 @@
 :root {
     --bg: #0a0a0a;
     --bg-soft: #111111;
-    --card: #1a1a1a;
-    --card-hover: #212121;
+    --card: #17171a;
+    --card-hover: #202024;
     --border: rgba(255, 255, 255, 0.08);
     --text: #f5f5f5;
     --text-muted: #a3a3a3;
     --white: #ffffff;
+    /* Accent signature : ambre « spotlight » (scène, cérémonie) */
+    --accent: #e3ad57;
+    --accent-strong: #f2c479;
+    --accent-soft: rgba(227, 173, 87, 0.14);
     --radius: 14px;
     --transition: 0.35s cubic-bezier(0.25, 0.6, 0.3, 1);
     --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -38,6 +42,29 @@ body {
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+}
+
+/* Grain cinématographique subtil sur tout le site */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Focus accessible et soigné */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+.filter:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 6px;
 }
 
 img {
@@ -93,6 +120,43 @@ button {
     transform: translateY(0);
 }
 
+/* Cascade d'apparition pour les grilles de cartes */
+.prestations__grid .presta-card:nth-child(2),
+.events__grid .event-card:nth-child(2),
+.features__grid > *:nth-child(2),
+.process__grid > *:nth-child(2) {
+    transition-delay: 0.08s;
+}
+
+.prestations__grid .presta-card:nth-child(3),
+.events__grid .event-card:nth-child(3),
+.features__grid > *:nth-child(3),
+.process__grid > *:nth-child(3) {
+    transition-delay: 0.16s;
+}
+
+.prestations__grid .presta-card:nth-child(4),
+.events__grid .event-card:nth-child(4) {
+    transition-delay: 0.24s;
+}
+
+.prestations__grid .presta-card:nth-child(5),
+.events__grid .event-card:nth-child(5) {
+    transition-delay: 0.32s;
+}
+
+.prestations__grid .presta-card:nth-child(6),
+.events__grid .event-card:nth-child(6) {
+    transition-delay: 0.4s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal {
+        transition: none;
+        transition-delay: 0s !important;
+    }
+}
+
 /* ---------- Boutons ---------- */
 .btn {
     display: inline-block;
@@ -121,7 +185,7 @@ button {
 }
 
 .btn--light:hover {
-    box-shadow: 0 8px 32px rgba(255, 255, 255, 0.22);
+    box-shadow: 0 8px 34px rgba(227, 173, 87, 0.35);
 }
 
 .btn--outline {
@@ -172,7 +236,24 @@ button {
     height: 64px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+}
+
+.nav__brand {
+    font-size: 1.02rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--white);
+    white-space: nowrap;
+    transition: opacity 0.25s ease;
+}
+
+.nav__brand span {
+    color: var(--accent);
+}
+
+.nav__brand:hover {
+    opacity: 0.85;
 }
 
 .nav__links {
@@ -196,6 +277,15 @@ button {
 
 .nav__link--active {
     color: var(--white);
+}
+
+.nav__link--active::after {
+    content: "";
+    display: block;
+    height: 2px;
+    margin-top: 4px;
+    border-radius: 2px;
+    background: var(--accent);
 }
 
 .nav__burger {
@@ -334,7 +424,7 @@ button {
     z-index: 2;
     width: 24px;
     height: 38px;
-    border: 2px solid rgba(255, 255, 255, 0.35);
+    border: 2px solid rgba(227, 173, 87, 0.6);
     border-radius: 14px;
 }
 
@@ -345,7 +435,7 @@ button {
     width: 4px;
     height: 8px;
     margin-left: -2px;
-    background: rgba(255, 255, 255, 0.7);
+    background: var(--accent);
     border-radius: 2px;
     animation: scroll-hint 1.8s ease-in-out infinite;
 }
@@ -748,9 +838,14 @@ button {
 }
 
 .faq__answer a {
-    color: var(--text);
+    color: var(--accent-strong);
     text-decoration: underline;
     text-underline-offset: 3px;
+    transition: color 0.2s ease;
+}
+
+.faq__answer a:hover {
+    color: var(--accent);
 }
 
 /* ==========================================================================
@@ -1276,13 +1371,22 @@ button {
         var(--bg);
 }
 
-.page-head__kicker {
-    font-size: 0.8rem;
-    font-weight: 600;
+.page-head__kicker,
+.kicker {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 14px;
+    color: var(--accent);
+    margin-bottom: 16px;
+}
+
+/* Kicker centré au-dessus des titres de section */
+.section > .kicker {
+    display: block;
+    text-align: center;
+    margin-bottom: 12px;
 }
 
 .page-head__title {
@@ -2150,7 +2254,11 @@ button {
 
     /* Navigation mobile */
     .nav__inner {
-        justify-content: flex-start;
+        justify-content: space-between;
+    }
+
+    .nav__brand {
+        font-size: 0.98rem;
     }
 
     .nav__burger {
