@@ -1834,63 +1834,157 @@ button {
 }
 
 /* ==========================================================================
-   Prestations (catégories d'événements)
+   Prestations (catégories d'événements — cartes images)
    ========================================================================== */
 .prestations__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 18px;
 }
 
 .presta-card {
-    background: var(--card);
-    border: 1px solid var(--border);
+    position: relative;
+    aspect-ratio: 4 / 5;
     border-radius: var(--radius);
-    padding: 30px 24px;
-    text-align: center;
-    transition: transform var(--transition), border-color var(--transition),
-        background var(--transition);
+    overflow: hidden;
+    background: var(--card);
+    transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.3, 1), box-shadow 0.5s ease;
+}
+
+.presta-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.62) saturate(0.9);
+    transition: filter 0.5s ease, transform 0.6s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+.presta-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 45%, rgba(0, 0, 0, 0.75) 100%);
+    pointer-events: none;
+}
+
+.presta-card__label {
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    bottom: 18px;
+    z-index: 2;
+}
+
+.presta-card__label h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -0.01em;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.7);
+    margin-bottom: 4px;
+}
+
+.presta-card__label p {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    max-height: 0;
+    transition: opacity 0.45s ease, max-height 0.45s ease;
 }
 
 .presta-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(255, 255, 255, 0.2);
-    background: var(--card-hover);
+    transform: translateY(-4px) scale(1.015);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.5);
 }
 
-.presta-card__icon {
-    width: 52px;
-    height: 52px;
-    margin: 0 auto 16px;
-    border-radius: 14px;
-    background: rgba(255, 255, 255, 0.06);
+.presta-card:hover img {
+    filter: brightness(1) saturate(1);
+    transform: scale(1.05);
+}
+
+.presta-card:hover .presta-card__label p {
+    opacity: 1;
+    max-height: 60px;
+}
+
+/* ==========================================================================
+   Derniers événements
+   ========================================================================== */
+.events__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.event-card {
+    background: var(--card);
     border: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-muted);
-    transition: color var(--transition), border-color var(--transition);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: transform var(--transition), border-color var(--transition),
+        box-shadow var(--transition);
 }
 
-.presta-card:hover .presta-card__icon {
-    color: var(--white);
-    border-color: rgba(255, 255, 255, 0.3);
+.event-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.18);
+    box-shadow: 0 16px 44px rgba(0, 0, 0, 0.4);
 }
 
-.presta-card__icon svg {
-    width: 24px;
-    height: 24px;
+.event-card__media {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
 }
 
-.presta-card__title {
-    font-size: 1.05rem;
+.event-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+.event-card:hover .event-card__media img {
+    transform: scale(1.05);
+}
+
+.event-card__badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 2;
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 0.72rem;
     font-weight: 700;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--white);
+    background: rgba(10, 10, 10, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(6px);
+}
+
+.event-card__body {
+    padding: 20px 22px 24px;
+}
+
+.event-card__place {
+    font-size: 0.8rem;
+    color: var(--text-muted);
     margin-bottom: 6px;
 }
 
-.presta-card__text {
-    font-size: 0.82rem;
+.event-card__title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+}
+
+.event-card__text {
+    font-size: 0.88rem;
     color: var(--text-muted);
 }
 
@@ -1973,6 +2067,11 @@ button {
     }
 
     .brings__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .prestations__grid,
+    .events__grid {
         grid-template-columns: repeat(2, 1fr);
     }
 
@@ -2173,6 +2272,10 @@ button {
     }
 
     .brings__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .events__grid {
         grid-template-columns: 1fr;
     }
 
