@@ -1836,10 +1836,14 @@ button {
 /* ==========================================================================
    Prestations (catégories d'événements — cartes images)
    ========================================================================== */
+.prestations {
+    max-width: min(1480px, 94vw);
+}
+
 .prestations__grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+    gap: 14px;
 }
 
 .presta-card {
@@ -1876,12 +1880,13 @@ button {
 }
 
 .presta-card__label h3 {
-    font-size: 1.15rem;
+    font-size: 1rem;
     font-weight: 700;
     color: var(--white);
     letter-spacing: -0.01em;
     text-shadow: 0 2px 14px rgba(0, 0, 0, 0.7);
-    margin-bottom: 4px;
+    margin-bottom: 0;
+    line-height: 1.25;
 }
 
 .presta-card__label p {
@@ -1911,6 +1916,10 @@ button {
 /* ==========================================================================
    Derniers événements
    ========================================================================== */
+.events {
+    max-width: 1060px;
+}
+
 .events__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -2073,6 +2082,10 @@ button {
     .prestations__grid,
     .events__grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .prestations__grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     }
 
     .features__grid {
