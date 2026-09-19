@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact — Kilian Kwiczor, animateur événementiel à Lille</title>
-    <meta name="description" content="Contactez Kilian Kwiczor, animateur événementiel à Lille et Lens : envoyez un message ou réservez un appel de consultation gratuit de 20 minutes pour votre séminaire, soirée ou salon.">
+    <title>Contact — Kilian Kwiczor, animateur d'événements à Lille</title>
+    <meta name="description" content="Contactez Kilian Kwiczor, animateur d'événements à Lille : envoyez un message ou réservez un appel de consultation gratuit de 20 minutes pour votre séminaire, soirée ou salon.">
     <link rel="canonical" href="https://kiliankwiczor.com/contact.html">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="fr_FR">
     <meta property="og:site_name" content="Kilian Kwiczor">
-    <meta property="og:title" content="Contact — Kilian Kwiczor, animateur événementiel">
+    <meta property="og:title" content="Contact — Kilian Kwiczor, animateur d'événements">
     <meta property="og:description" content="Envoyez un message ou réservez un appel de consultation gratuit pour votre événement.">
     <meta property="og:url" content="https://kiliankwiczor.com/contact.html">
     <meta property="og:image" content="https://kiliankwiczor.com/assets/images/portrait.jpg">
@@ -46,8 +46,8 @@
             <div class="page-head__inner">
                 <p class="page-head__kicker">Contact</p>
                 <h1 class="page-head__title">Parlons de votre prochain événement</h1>
-                <p class="page-head__subtitle">Convention, cérémonie, événement sportif, activation de marque ou interview&nbsp;: partagez-moi les premières informations du projet afin que je puisse comprendre le format, le public et le niveau de préparation attendu.</p>
-                <p class="page-head__reassurance">Basé entre Lens et Lille · Déplacements partout en France</p>
+                <p class="page-head__subtitle">Parlez-moi de votre événement en quelques mots&nbsp;: je reviens vers vous rapidement.</p>
+                <p class="page-head__reassurance">Basé à Lille · Disponible partout en francophonie</p>
             </div>
         </section>
 
@@ -55,22 +55,15 @@
         <section class="contact section">
             <div class="contact__layout">
 
-                <!-- Colonne principale : bloc agence + formulaire -->
+                <!-- Colonne principale : formulaire simplifié -->
                 <div class="contact__main">
-                    <div class="agency-block reveal">
-                        <h2 class="agency-block__title">Vous êtes une agence ou une équipe de production&nbsp;?</h2>
-                        <p>Vous pouvez m'envoyer directement le conducteur, le brief ou les informations déjà disponibles. Je m'intègre à votre méthode de travail et peux échanger avec la chefferie de projet, la production ou la régie selon les besoins du format.</p>
-                    </div>
-
                     <div class="contact__form-wrap reveal">
-                        <h2 class="contact__form-title">Les informations de votre projet</h2>
+                        <h2 class="contact__form-title">Votre demande</h2>
                         <!--
                             FORMULAIRE : envoi AJAX via FormSubmit (service gratuit, sans compte).
                             Au premier envoi depuis le site en ligne, FormSubmit enverra un email
                             de confirmation à contact@kiliankwiczor.com : cliquez sur le lien
                             d'activation et tout fonctionnera ensuite.
-                            L'adresse pourra être remplacée par contact@kiliankwiczor.com une fois
-                            celle-ci testée et fiable.
                         -->
                         <form class="form" id="contactForm" action="https://formsubmit.co/contact@kiliankwiczor.com" method="POST">
                             <input type="hidden" name="_subject" value="Nouvelle demande depuis kiliankwiczor.com">
@@ -83,82 +76,36 @@
                                     <input type="text" id="nom" name="Nom et prénom" autocomplete="name" required>
                                 </div>
                                 <div class="form__group">
-                                    <label for="societe">Société ou organisation <span class="form__optional">(facultatif)</span></label>
-                                    <input type="text" id="societe" name="Société" autocomplete="organization">
+                                    <label for="email">Adresse e-mail</label>
+                                    <input type="email" id="email" name="Email" autocomplete="email" required>
                                 </div>
                             </div>
 
                             <div class="form__row">
-                                <div class="form__group">
-                                    <label for="email">Adresse e-mail professionnelle</label>
-                                    <input type="email" id="email" name="Email" autocomplete="email" required>
-                                </div>
                                 <div class="form__group">
                                     <label for="tel">Téléphone <span class="form__optional">(facultatif)</span></label>
                                     <input type="tel" id="tel" name="Téléphone" autocomplete="tel">
                                 </div>
-                            </div>
-
-                            <div class="form__row">
                                 <div class="form__group">
                                     <label for="type">Type d'événement</label>
                                     <select id="type" name="Type d'événement">
                                         <option value="" selected>Sélectionner…</option>
-                                        <option>Convention ou séminaire</option>
-                                        <option>Cérémonie ou remise de prix</option>
+                                        <option>Séminaire ou convention</option>
+                                        <option>Remise de prix</option>
+                                        <option>Diffusion en direct</option>
                                         <option>Événement institutionnel</option>
-                                        <option>Événement sportif</option>
-                                        <option>Activation de marque</option>
-                                        <option>Interview ou table ronde</option>
-                                        <option>Salon ou inauguration</option>
+                                        <option>Table ronde</option>
                                         <option>Autre format</option>
                                     </select>
                                 </div>
-                                <div class="form__group">
-                                    <label for="date">Date prévue</label>
-                                    <input type="text" id="date" name="Date prévue" placeholder="Ex. 14 mars 2026 — ou « à définir »">
-                                </div>
                             </div>
-
-                            <div class="form__row">
-                                <div class="form__group">
-                                    <label for="lieu">Ville ou lieu de l'événement <span class="form__optional">(facultatif)</span></label>
-                                    <input type="text" id="lieu" name="Ville ou lieu">
-                                </div>
-                                <div class="form__group">
-                                    <label for="participants">Nombre approximatif de participants <span class="form__optional">(facultatif)</span></label>
-                                    <select id="participants" name="Participants">
-                                        <option value="" selected>À définir</option>
-                                        <option>Moins de 50</option>
-                                        <option>50 à 150</option>
-                                        <option>150 à 300</option>
-                                        <option>300 à 500</option>
-                                        <option>Plus de 500</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <fieldset class="form__group form__fieldset">
-                                <legend>Intervention recherchée <span class="form__optional">(facultatif)</span></legend>
-                                <div class="form__checks">
-                                    <label class="form__check"><input type="checkbox" name="Intervention" value="Présentation générale"> Présentation générale</label>
-                                    <label class="form__check"><input type="checkbox" name="Intervention" value="Maîtrise de cérémonie"> Maîtrise de cérémonie</label>
-                                    <label class="form__check"><input type="checkbox" name="Intervention" value="Animation micro"> Animation micro</label>
-                                    <label class="form__check"><input type="checkbox" name="Intervention" value="Interviews"> Interviews</label>
-                                    <label class="form__check"><input type="checkbox" name="Intervention" value="Table ronde"> Table ronde</label>
-                                    <label class="form__check"><input type="checkbox" name="Intervention" value="Activation terrain"> Activation terrain</label>
-                                    <label class="form__check"><input type="checkbox" name="Intervention" value="À définir ensemble"> À définir ensemble</label>
-                                </div>
-                            </fieldset>
 
                             <div class="form__group">
-                                <label for="message">Parlez-moi du projet</label>
-                                <textarea id="message" name="Message" rows="6" placeholder="Format, public, horaires, intervenants, tonalité souhaitée, principales séquences et contraintes déjà identifiées." required></textarea>
+                                <label for="message">Votre projet en quelques mots</label>
+                                <textarea id="message" name="Message" rows="5" placeholder="Type d'événement, date, lieu et ce que vous attendez de l'animation." required></textarea>
                             </div>
 
-                            <p class="form__note-file">Vous avez déjà un conducteur ou un brief&nbsp;? Vous pourrez me l'envoyer par e-mail après ce premier contact.</p>
-
-                            <button type="submit" class="btn btn--light form__submit">Envoyer les informations du projet</button>
+                            <button type="submit" class="btn btn--light form__submit">Envoyer ma demande</button>
                             <p class="form__consent">Les informations transmises servent uniquement à étudier votre demande et à vous recontacter.</p>
                             <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
                         </form>
@@ -169,8 +116,8 @@
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
                             </div>
                             <h3>Votre demande a bien été transmise</h3>
-                            <p>Merci pour ces informations. Je vais prendre connaissance du format et vous répondre afin de préciser les besoins, les disponibilités et les prochaines étapes.</p>
-                            <a href="videos.html" class="btn btn--ghost">Voir les réalisations</a>
+                            <p>Merci&nbsp;! Je reviens vers vous rapidement pour échanger sur votre événement.</p>
+                            <a href="index.html" class="btn btn--ghost">Retour à l'accueil</a>
                         </div>
                     </div>
                 </div>
@@ -220,8 +167,8 @@
                     <div class="aside-block info-block">
                         <h2 class="aside-block__title">Informations utiles</h2>
                         <ul class="info-list">
-                            <li><span>Base</span> Lens et Lille</li>
-                            <li><span>Zone d'intervention</span> France entière</li>
+                            <li><span>Base</span> Lille</li>
+                            <li><span>Zone d'intervention</span> Partout en francophonie</li>
                             <li><span>Formats</span> présentiel, plateau, direct et dispositifs hybrides</li>
                             <li><span>Interlocuteurs</span> agences, entreprises, collectivités, centres commerciaux et organisateurs d'événements</li>
                         </ul>
@@ -243,11 +190,11 @@
             <div class="faq__list">
                 <div class="faq__item reveal">
                     <button class="faq__question" aria-expanded="false">
-                        <span>Intervenez-vous partout en France&nbsp;?</span>
+                        <span>Intervenez-vous partout en francophonie&nbsp;?</span>
                         <span class="faq__toggle" aria-hidden="true"></span>
                     </button>
                     <div class="faq__answer">
-                        <p>Oui. Je suis basé entre Lens et Lille et je me déplace partout en France selon le format, les horaires et les besoins de production.</p>
+                        <p>Oui. Je suis basé à Lille et je me déplace partout en francophonie selon le format, les horaires et les besoins de production.</p>
                     </div>
                 </div>
                 <div class="faq__item reveal">
@@ -293,7 +240,7 @@
 
     <!-- ============ FOOTER ============ -->
     <footer class="footer">
-        <p class="footer__tagline">Animateur événementiel, présentateur &amp; maître de cérémonie<br>Lille, Lens &amp; Hauts-de-France — mobile partout en France</p>
+        <p class="footer__tagline">Animateur &amp; présentateur d'événements · Maître de cérémonie<br>Basé à Lille · Disponible partout en francophonie</p>
         <div class="footer__social">
             <a href="https://www.instagram.com/kilian_kwiczor/" target="_blank" rel="noopener" aria-label="Instagram" class="social social--instagram">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>

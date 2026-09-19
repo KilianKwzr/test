@@ -1834,6 +1834,67 @@ button {
 }
 
 /* ==========================================================================
+   Prestations (catégories d'événements)
+   ========================================================================== */
+.prestations__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 18px;
+}
+
+.presta-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 30px 24px;
+    text-align: center;
+    transition: transform var(--transition), border-color var(--transition),
+        background var(--transition);
+}
+
+.presta-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.2);
+    background: var(--card-hover);
+}
+
+.presta-card__icon {
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 16px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    transition: color var(--transition), border-color var(--transition);
+}
+
+.presta-card:hover .presta-card__icon {
+    color: var(--white);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.presta-card__icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.presta-card__title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+}
+
+.presta-card__text {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+/* ==========================================================================
    Bandeau cookies
    ========================================================================== */
 .cookie-banner {
