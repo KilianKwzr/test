@@ -6,10 +6,10 @@
 /* ---------- Variables ---------- */
 :root {
     /* Bleu nuit profond (dégradé géré sur body) */
-    --bg: #0a0c14;
-    --bg-soft: #10131f;
-    --card: #161925;
-    --card-hover: #1e2231;
+    --bg: #0a0f22;
+    --bg-soft: #101733;
+    --card: #151d3a;
+    --card-hover: #1e2748;
     --border: rgba(255, 255, 255, 0.08);
     --text: #f5f5f5;
     --text-muted: #a3a3a3;
@@ -41,8 +41,8 @@ body {
     background-color: var(--bg);
     /* Dégradé bleu nuit : halo froid en haut, profondeur en bas */
     background-image:
-        radial-gradient(1200px 760px at 50% -12%, rgba(58, 78, 138, 0.22), transparent 62%),
-        radial-gradient(1000px 720px at 85% 108%, rgba(38, 52, 96, 0.16), transparent 58%);
+        radial-gradient(1300px 820px at 50% -10%, rgba(60, 92, 190, 0.38), transparent 60%),
+        radial-gradient(1100px 780px at 88% 112%, rgba(44, 66, 140, 0.28), transparent 56%);
     background-attachment: fixed;
     background-repeat: no-repeat;
     color: var(--text);
@@ -337,7 +337,7 @@ button {
     justify-content: center;
     text-align: center;
     overflow: hidden;
-    background: #101018;
+    background: #0a0f22;
 }
 
 .hero__video {
@@ -353,9 +353,9 @@ button {
     inset: 0;
     background: linear-gradient(
         180deg,
-        rgba(5, 5, 8, 0.55) 0%,
-        rgba(5, 5, 8, 0.35) 45%,
-        rgba(10, 10, 10, 0.9) 100%
+        rgba(9, 14, 34, 0.58) 0%,
+        rgba(14, 22, 52, 0.32) 45%,
+        rgba(10, 15, 34, 0.94) 100%
     );
 }
 
