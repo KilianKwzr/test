@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Kilian Kwiczor, animateur d'événements à Lille</title>
+    <meta name="description" content="Contactez Kilian Kwiczor, animateur d'événements à Lille : envoyez un message ou réservez un appel de consultation gratuit de 20 minutes pour votre séminaire, soirée ou salon.">
+    <link rel="canonical" href="https://kiliankwiczor.com/contact.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Kilian Kwiczor">
+    <meta property="og:title" content="Contact — Kilian Kwiczor, animateur d'événements">
+    <meta property="og:description" content="Envoyez un message ou réservez un appel de consultation gratuit pour votre événement.">
+    <meta property="og:url" content="https://kiliankwiczor.com/contact.html">
+    <meta property="og:image" content="https://kiliankwiczor.com/assets/images/portrait.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon-96.png">
+    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css?v=4">
+</head>
+<body>
+
+    <!-- ============ NAVIGATION ============ -->
+    <header class="nav is-scrolled" id="nav">
+        <nav class="nav__inner">
+            <a href="index.html" class="nav__brand" aria-label="Kilian Kwiczor — accueil"><span>Kilian</span> Kwiczor</a>
+            <button class="nav__burger" id="navBurger" aria-label="Ouvrir le menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav__links" id="navLinks">
+                <li><a href="index.html" class="nav__link">Accueil</a></li>
+                <li><a href="videos.html" class="nav__link">Projets</a></li>
+                <li><a href="a-propos.html" class="nav__link">À propos</a></li>
+                <li><a href="contact.html" class="nav__link nav__link--active">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- ============ EN-TÊTE DE PAGE ============ -->
+        <section class="page-head">
+            <div class="page-head__inner">
+                <p class="page-head__kicker">Contact</p>
+                <h1 class="page-head__title">Parlons de votre prochain événement</h1>
+                <p class="page-head__subtitle">Parlez-moi de votre événement en quelques mots&nbsp;: je reviens vers vous rapidement.</p>
+                <p class="page-head__reassurance">Basé à Lille · Disponible partout en francophonie</p>
+            </div>
+        </section>
+
+        <!-- ============ FORMULAIRE + COLONNE LATÉRALE ============ -->
+        <section class="contact section">
+            <div class="contact__layout">
+
+                <!-- Colonne principale : formulaire simplifié -->
+                <div class="contact__main">
+                    <div class="contact__form-wrap reveal">
+                        <h2 class="contact__form-title">Votre demande</h2>
+                        <!--
+                            FORMULAIRE : envoi AJAX via FormSubmit (service gratuit, sans compte).
+                            Au premier envoi depuis le site en ligne, FormSubmit enverra un email
+                            de confirmation à contact@kiliankwiczor.com : cliquez sur le lien
+                            d'activation et tout fonctionnera ensuite.
+                        -->
+                        <form class="form" id="contactForm" action="https://formsubmit.co/contact@kiliankwiczor.com" method="POST">
+                            <input type="hidden" name="_subject" value="Nouvelle demande depuis kiliankwiczor.com">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="text" name="_honey" class="form__honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+                            <div class="form__row">
+                                <div class="form__group">
+                                    <label for="nom">Nom et prénom</label>
+                                    <input type="text" id="nom" name="Nom et prénom" autocomplete="name" required>
+                                </div>
+                                <div class="form__group">
+                                    <label for="email">Adresse e-mail</label>
+                                    <input type="email" id="email" name="Email" autocomplete="email" required>
+                                </div>
+                            </div>
+
+                            <div class="form__row">
+                                <div class="form__group">
+                                    <label for="tel">Téléphone <span class="form__optional">(facultatif)</span></label>
+                                    <input type="tel" id="tel" name="Téléphone" autocomplete="tel">
+                                </div>
+                                <div class="form__group">
+                                    <label for="type">Type d'événement</label>
+                                    <select id="type" name="Type d'événement">
+                                        <option value="" selected>Sélectionner…</option>
+                                        <option>Séminaire ou convention</option>
+                                        <option>Remise de prix</option>
+                                        <option>Diffusion en direct</option>
+                                        <option>Événement institutionnel</option>
+                                        <option>Table ronde</option>
+                                        <option>Autre format</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form__group">
+                                <label for="message">Votre projet en quelques mots</label>
+                                <textarea id="message" name="Message" rows="5" placeholder="Type d'événement, date, lieu et ce que vous attendez de l'animation." required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn--light form__submit">Envoyer ma demande</button>
+                            <p class="form__consent">Les informations transmises servent uniquement à étudier votre demande et à vous recontacter.</p>
+                            <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
+                        </form>
+
+                        <!-- Message de confirmation (affiché après envoi réussi) -->
+                        <div class="form__success" id="formSuccess" hidden>
+                            <div class="form__success-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                            </div>
+                            <h3>Votre demande a bien été transmise</h3>
+                            <p>Merci&nbsp;! Je reviens vers vous rapidement pour échanger sur votre événement.</p>
+                            <a href="index.html" class="btn btn--ghost">Retour à l'accueil</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Colonne latérale : contacts directs + infos pratiques + démo -->
+                <aside class="contact__aside reveal">
+                    <div class="aside-block">
+                        <h2 class="aside-block__title">Vous préférez un échange direct&nbsp;?</h2>
+                        <a class="contact-card" href="mailto:contact@kiliankwiczor.com">
+                            <div class="contact-card__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            </div>
+                            <div>
+                                <h3>Email</h3>
+                                <p>contact@kiliankwiczor.com</p>
+                            </div>
+                        </a>
+                        <a class="contact-card" href="tel:+33786781471">
+                            <div class="contact-card__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            </div>
+                            <div>
+                                <h3>Téléphone</h3>
+                                <p>07 86 78 14 71</p>
+                            </div>
+                        </a>
+                        <a class="contact-card" href="https://www.linkedin.com/in/kilian-kwiczor-708461267/" target="_blank" rel="noopener">
+                            <div class="contact-card__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                            </div>
+                            <div>
+                                <h3>LinkedIn</h3>
+                                <p>Kilian Kwiczor</p>
+                            </div>
+                        </a>
+                        <a class="contact-card" href="https://www.instagram.com/kilian_kwiczor/" target="_blank" rel="noopener">
+                            <div class="contact-card__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                            </div>
+                            <div>
+                                <h3>Instagram</h3>
+                                <p>@kilian_kwiczor</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="aside-block info-block">
+                        <h2 class="aside-block__title">Informations utiles</h2>
+                        <ul class="info-list">
+                            <li><span>Base</span> Lille</li>
+                            <li><span>Zone d'intervention</span> Partout en francophonie</li>
+                            <li><span>Formats</span> présentiel, plateau, direct et dispositifs hybrides</li>
+                            <li><span>Interlocuteurs</span> agences, entreprises, collectivités, centres commerciaux et organisateurs d'événements</li>
+                        </ul>
+                    </div>
+
+                    <div class="aside-block demo-block">
+                        <h2 class="aside-block__title">Voir Kilian en situation</h2>
+                        <p>Un aperçu au micro avant d'échanger&nbsp;?</p>
+                        <a href="index.html#demo" class="btn btn--ghost">Regarder la bande démo</a>
+                    </div>
+                </aside>
+
+            </div>
+        </section>
+
+        <!-- ============ FAQ ============ -->
+        <section class="faq section">
+            <h2 class="section__title reveal">Questions fréquentes</h2>
+            <div class="faq__list">
+                <div class="faq__item reveal">
+                    <button class="faq__question" aria-expanded="false">
+                        <span>Intervenez-vous partout en francophonie&nbsp;?</span>
+                        <span class="faq__toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq__answer">
+                        <p>Oui. Je suis basé à Lille et je me déplace partout en francophonie selon le format, les horaires et les besoins de production.</p>
+                    </div>
+                </div>
+                <div class="faq__item reveal">
+                    <button class="faq__question" aria-expanded="false">
+                        <span>Pouvez-vous travailler à partir de notre conducteur&nbsp;?</span>
+                        <span class="faq__toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq__answer">
+                        <p>Oui. Je peux intervenir à partir d'un conducteur déjà finalisé ou contribuer à clarifier les transitions, les lancements et les séquences nécessitant une prise de parole.</p>
+                    </div>
+                </div>
+                <div class="faq__item reveal">
+                    <button class="faq__question" aria-expanded="false">
+                        <span>Pouvez-vous préparer et conduire des interviews&nbsp;?</span>
+                        <span class="faq__toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq__answer">
+                        <p>Oui. La préparation peut inclure la recherche des sujets, l'organisation des questions, la vérification des informations et l'adaptation du niveau de langage au public.</p>
+                    </div>
+                </div>
+                <div class="faq__item reveal">
+                    <button class="faq__question" aria-expanded="false">
+                        <span>Travaillez-vous directement avec les agences événementielles&nbsp;?</span>
+                        <span class="faq__toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq__answer">
+                        <p>Oui. Je peux intervenir en marque blanche ou dans le cadre défini par l'agence, en respectant la relation avec le client final, les validations et les consignes de production.</p>
+                    </div>
+                </div>
+                <div class="faq__item reveal">
+                    <button class="faq__question" aria-expanded="false">
+                        <span>Comment se déroule la préparation&nbsp;?</span>
+                        <span class="faq__toggle" aria-hidden="true"></span>
+                    </button>
+                    <div class="faq__answer">
+                        <p>Après un premier échange, je prends connaissance du format, du public, du conducteur, des intervenants et des contraintes techniques. Le niveau de préparation est ensuite adapté à la complexité de l'événement.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+        <p class="footer__tagline">Animateur &amp; présentateur d'événements · Maître de cérémonie<br>Basé à Lille · Disponible partout en francophonie</p>
+        <div class="footer__social">
+            <a href="https://www.instagram.com/kilian_kwiczor/" target="_blank" rel="noopener" aria-label="Instagram" class="social social--instagram">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/kilian-kwiczor-708461267/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social social--linkedin">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="https://www.youtube.com/@kilianlamare" target="_blank" rel="noopener" aria-label="YouTube" class="social social--youtube">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+        </div>
+        <div class="footer__meta">
+            <a href="mailto:contact@kiliankwiczor.com" class="footer__mail">contact@kiliankwiczor.com</a>
+            <span class="footer__copy">© 2026 kiliankwiczor.com</span>
+        </div>
+    </footer>
+
+    <script src="js/main.js?v=4"></script>
+</body>
+</html>
