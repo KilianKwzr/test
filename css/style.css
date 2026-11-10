@@ -2280,7 +2280,7 @@ button {
     }
 
     .nav {
-        background: rgba(10, 10, 10, 0.85);
+        background: rgba(10, 15, 34, 0.9);
         backdrop-filter: blur(14px);
     }
 
@@ -2291,7 +2291,7 @@ button {
         right: 0;
         flex-direction: column;
         gap: 0;
-        background: rgba(10, 10, 10, 0.97);
+        background: rgba(10, 15, 34, 0.98);
         border-bottom: 1px solid var(--border);
         padding: 8px 16px 16px;
         opacity: 0;
@@ -2462,5 +2462,143 @@ button {
         transform: none;
         animation: none;
         transition: none;
+    }
+}
+
+/* ==========================================================================
+   Demande de devis : bouton de navigation, pied de page, textes d'appui
+   ========================================================================== */
+.nav__links {
+    margin-left: auto;
+    align-items: center;
+}
+
+/* Liens alignés sur le logo et le bouton ; le soulignement actif ne décale plus le texte */
+.nav__link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.nav__link--active::after {
+    position: absolute;
+    left: 18px;
+    right: 18px;
+    bottom: 2px;
+    margin-top: 0;
+}
+
+.nav__cta {
+    margin-left: 14px;
+    padding: 9px 18px;
+    border-radius: 10px;
+    background: var(--accent);
+    color: #1a1206;
+    font-size: 0.92rem;
+    font-weight: 700;
+    white-space: nowrap;
+    box-shadow: 0 4px 18px rgba(227, 173, 87, 0.22);
+    transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.nav__cta:hover {
+    background: var(--accent-strong);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 26px rgba(227, 173, 87, 0.35);
+}
+
+/* Précision géographique sous le titre principal */
+.hero__title-geo {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.5em;
+    font-weight: 600;
+    letter-spacing: 0;
+    color: var(--accent-strong);
+}
+
+/* Phrase d'introduction sous un titre de section */
+.section__intro {
+    text-align: center;
+    color: var(--text-muted);
+    max-width: 720px;
+    margin: -32px auto 44px;
+    font-size: 0.95rem;
+}
+
+.cta__box .kicker {
+    margin-bottom: 12px;
+}
+
+.footer__cta {
+    background: #0a0f22;
+    color: var(--white);
+    margin-bottom: 24px;
+}
+
+.footer__cta:hover {
+    box-shadow: 0 10px 26px rgba(10, 15, 34, 0.3);
+}
+
+.footer__nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px 22px;
+    margin-bottom: 24px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: #404040;
+}
+
+.footer__nav a:hover {
+    color: #0a0a0a;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+@media (max-width: 768px) {
+    .nav__cta {
+        margin-left: auto;
+        padding: 8px 13px;
+        font-size: 0.84rem;
+    }
+
+    .nav__burger {
+        margin-left: 6px;
+    }
+
+    .nav__links {
+        align-items: stretch;
+    }
+
+    .nav__link {
+        display: block;
+    }
+
+    .nav__link--active::after {
+        left: 12px;
+        right: auto;
+        width: 30px;
+        bottom: 7px;
+    }
+
+    .hero__title-geo {
+        font-size: 0.58em;
+    }
+
+    .section__intro {
+        margin-top: -20px;
+    }
+}
+
+@media (max-width: 360px) {
+    .nav__brand {
+        font-size: 0.9rem;
+    }
+
+    .nav__cta {
+        padding: 7px 10px;
+        font-size: 0.78rem;
     }
 }

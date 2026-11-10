@@ -280,7 +280,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     "Le message n'a pas pu être envoyé. Vérifiez les informations indiquées ou écrivez-moi directement à contact@kiliankwiczor.com.";
                 statusEl.classList.add("is-error");
                 submitBtn.disabled = false;
-                submitBtn.textContent = "Envoyer les informations du projet";
+                submitBtn.textContent = "Envoyer ma demande de devis";
             }
         });
     }

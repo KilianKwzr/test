@@ -1,4 +1,19 @@
+# Tous les robots sont les bienvenus, moteurs de recherche comme assistants IA.
 User-agent: *
+Allow: /
+
+# Assistants et moteurs IA : accès explicitement autorisé
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: MistralAI-User
 Allow: /
 
 Sitemap: https://kiliankwiczor.com/sitemap.xml
