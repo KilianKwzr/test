@@ -255,6 +255,15 @@ document.addEventListener("DOMContentLoaded", () => {
             submitBtn.disabled = true;
             submitBtn.textContent = "Envoi en cours…";
 
+            // Le service d'envoi peut mettre jusqu'à une minute à confirmer :
+            // on rassure le visiteur pour qu'il ne quitte pas la page.
+            const slowTimer = setTimeout(() => {
+                statusEl.textContent =
+                    "Votre demande est en cours d'envoi. La confirmation peut prendre jusqu'à une minute : merci de ne pas fermer la page.";
+            }, 5000);
+            const controller = window.AbortController ? new AbortController() : null;
+            const abortTimer = controller ? setTimeout(() => controller.abort(), 90000) : null;
+
             try {
                 const endpoint = contactForm.action.replace(
                     "formsubmit.co/",
@@ -264,23 +273,37 @@ document.addEventListener("DOMContentLoaded", () => {
                     method: "POST",
                     headers: { Accept: "application/json" },
                     body: new FormData(contactForm),
+                    signal: controller ? controller.signal : undefined,
                 });
 
                 if (!response.ok) throw new Error("http " + response.status);
                 const data = await response.json();
                 if (data.success === "true" || data.success === true) {
+                    clearTimeout(slowTimer);
+                    statusEl.textContent = "";
                     contactForm.hidden = true;
                     successEl.hidden = false;
                     successEl.scrollIntoView({ behavior: "smooth", block: "center" });
+                    // Mesure de la conversion (seulement si le visiteur a accepté Google Analytics)
+                    if (typeof window.gtag === "function") {
+                        const typeField = contactForm.querySelector("#type");
+                        window.gtag("event", "generate_lead", {
+                            event_category: "devis",
+                            event_label: typeField && typeField.value ? typeField.value : "non précisé",
+                        });
+                    }
                 } else {
                     throw new Error("formsubmit");
                 }
             } catch (err) {
+                clearTimeout(slowTimer);
                 statusEl.textContent =
                     "Le message n'a pas pu être envoyé. Vérifiez les informations indiquées ou écrivez-moi directement à contact@kiliankwiczor.com.";
                 statusEl.classList.add("is-error");
                 submitBtn.disabled = false;
                 submitBtn.textContent = "Envoyer ma demande de devis";
+            } finally {
+                if (abortTimer) clearTimeout(abortTimer);
             }
         });
     }
