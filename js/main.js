@@ -295,5 +295,50 @@ document.addEventListener("DOMContentLoaded", () => {
             },
             true
         );
+
+        /* Chargement différé : l'image d'affiche s'affiche tout de suite,
+           la vidéo n'est téléchargée qu'une fois la page chargée
+           (et jamais en mode « économie de données » ou mouvement réduit). */
+        if (heroVideo.dataset.src) {
+            const conn = navigator.connection || {};
+            const saveData = conn.saveData || /(^|-)2g$/.test(conn.effectiveType || "");
+            const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            if (!saveData && !reduceMotion) {
+                const startVideo = () => {
+                    const mobile = window.matchMedia("(max-width: 768px)").matches;
+                    const source = document.createElement("source");
+                    source.src = mobile && heroVideo.dataset.srcMobile ? heroVideo.dataset.srcMobile : heroVideo.dataset.src;
+                    source.type = "video/mp4";
+                    heroVideo.appendChild(source);
+                    heroVideo.load();
+                    const playing = heroVideo.play();
+                    if (playing && playing.catch) playing.catch(() => {});
+                };
+                if (document.readyState === "complete") setTimeout(startVideo, 200);
+                else window.addEventListener("load", () => setTimeout(startVideo, 200), { once: true });
+            }
+        }
     }
+
+    /* ---------- Vidéos YouTube : vignette, lecteur chargé seulement au clic ---------- */
+    document.querySelectorAll(".yt[data-id]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+            const iframe = document.createElement("iframe");
+            iframe.src = "https://www.youtube-nocookie.com/embed/" + btn.dataset.id + "?autoplay=1&rel=0";
+            iframe.title = btn.dataset.title || "Vidéo";
+            iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+            iframe.referrerPolicy = "strict-origin-when-cross-origin";
+            iframe.setAttribute("frameborder", "0");
+            iframe.allowFullscreen = true;
+            btn.replaceWith(iframe);
+        });
+    });
+
+    /* ---------- Pied de page : revenir sur son choix de cookies ---------- */
+    document.querySelectorAll("[data-cookie-reset]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+            try { localStorage.removeItem("cookie-consent"); } catch (e) {}
+            window.location.reload();
+        });
+    });
 });
