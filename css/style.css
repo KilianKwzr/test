@@ -2602,3 +2602,327 @@ button {
         font-size: 0.78rem;
     }
 }
+
+/* ==========================================================================
+   Phase 2 SEO : sous-menu Prestations, pages prestations, références,
+   lecteur YouTube léger, pied de page légal
+   ========================================================================== */
+.nav__item--sub {
+    position: relative;
+}
+
+.nav__caret {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-left: 8px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: translateY(-2px) rotate(45deg);
+    opacity: 0.7;
+}
+
+.nav__sub {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 280px;
+    padding: 8px;
+    background: rgba(10, 15, 34, 0.98);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    z-index: 110;
+}
+
+.nav__item--sub:hover .nav__sub,
+.nav__item--sub:focus-within .nav__sub {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.nav__sub a {
+    display: block;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.85);
+    transition: color 0.2s ease, background 0.2s ease;
+}
+
+.nav__sub a:hover,
+.nav__sub a[aria-current="page"] {
+    color: var(--accent-strong);
+    background: rgba(227, 173, 87, 0.1);
+}
+
+@media (max-width: 1180px) and (min-width: 769px) {
+    .nav__link {
+        padding: 9px 11px;
+        font-size: 0.95rem;
+    }
+    .nav__link--active::after {
+        left: 11px;
+        right: 11px;
+    }
+    .nav__cta {
+        margin-left: 8px;
+        padding: 8px 13px;
+    }
+}
+
+@media (max-width: 900px) and (min-width: 769px) {
+    .nav__link {
+        padding: 8px 8px;
+        font-size: 0.88rem;
+    }
+    .nav__brand {
+        font-size: 0.92rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav__links {
+        max-height: calc(100vh - 64px);
+        overflow-y: auto;
+    }
+    .nav__sub {
+        position: static;
+        min-width: 0;
+        padding: 0 0 6px 14px;
+        background: none;
+        border: 0;
+        box-shadow: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+    }
+    .nav__sub a {
+        padding: 9px 12px;
+        font-size: 0.92rem;
+        color: rgba(255, 255, 255, 0.7);
+    }
+    .nav__caret {
+        display: none;
+    }
+}
+
+/* Fil d'Ariane */
+.breadcrumb {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-bottom: 18px;
+}
+
+.breadcrumb a:hover {
+    color: var(--accent-strong);
+}
+
+.breadcrumb span[aria-current] {
+    color: var(--text);
+}
+
+/* Texte long des pages prestations */
+.prose {
+    max-width: 820px;
+    margin: 0 auto;
+}
+
+.prose h2 {
+    font-size: clamp(1.35rem, 2.6vw, 1.8rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+    margin: 52px 0 16px;
+}
+
+.prose h2:first-child {
+    margin-top: 0;
+}
+
+.prose h3 {
+    font-size: 1.08rem;
+    font-weight: 700;
+    margin: 28px 0 10px;
+    color: var(--white);
+}
+
+.prose p {
+    color: #d4d4d8;
+    margin-bottom: 16px;
+}
+
+.prose ul {
+    margin: 0 0 20px;
+}
+
+.prose li {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 10px;
+    color: #d4d4d8;
+}
+
+.prose li::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 0.72em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+.prose a {
+    color: var(--accent-strong);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.prose strong {
+    color: var(--white);
+}
+
+.section--tight {
+    padding-top: 40px;
+}
+
+/* Cartes cliquables */
+a.presta-card {
+    display: block;
+}
+
+a.bring-card {
+    display: block;
+}
+
+.bring-card__more {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent);
+}
+
+a.bring-card:hover .bring-card__more {
+    color: var(--accent-strong);
+}
+
+.brings__grid--3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 1024px) {
+    .brings__grid--3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .brings__grid--3 {
+        grid-template-columns: 1fr;
+    }
+}
+
+.ref-date {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    margin-bottom: 6px;
+}
+
+/* Lecteur YouTube léger : vignette, la vidéo ne se charge qu'au clic */
+.yt {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    background: #000;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.yt img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.88;
+    transition: opacity 0.3s ease, transform 0.5s ease;
+}
+
+.yt:hover img {
+    opacity: 1;
+    transform: scale(1.02);
+}
+
+.yt__play {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 72px;
+    height: 50px;
+    border-radius: 14px;
+    background: rgba(227, 173, 87, 0.94);
+    box-shadow: 0 8px 26px rgba(0, 0, 0, 0.45);
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.yt__play::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-35%, -50%);
+    border-left: 18px solid #1a1206;
+    border-top: 11px solid transparent;
+    border-bottom: 11px solid transparent;
+}
+
+.yt:hover .yt__play,
+.yt:focus-visible .yt__play {
+    transform: scale(1.08);
+    background: var(--accent-strong);
+}
+
+/* Pied de page : liens légaux */
+.footer__legal {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+    margin-top: 18px;
+    font-size: 0.8rem;
+    color: #6b6b6b;
+}
+
+.footer__legal a,
+.footer__legal button {
+    color: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.footer__legal a:hover,
+.footer__legal button:hover {
+    color: #171717;
+}
+.page-head .cta__actions {
+    margin-top: 28px;
+}
+
+.page-head .breadcrumb + .page-head__kicker {
+    margin-top: 4px;
+}
